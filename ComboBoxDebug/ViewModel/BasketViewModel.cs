@@ -8,6 +8,7 @@ namespace ComboBoxDebug.ViewModel;
 public class BasketViewModel : BindableBase
 {
     private Basket _basket;
+    
     public BasketViewModel(Basket basket)
     {
         _basket = basket;

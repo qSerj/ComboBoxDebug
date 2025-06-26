@@ -24,28 +24,6 @@ public class BasketsViewModel : BindableBase
         }
     }
 
-    public ObservableCollection<Thing> Items
-    {
-        get => SelectedBasket?.Items;
-    }
-
-    public Thing SelectedThing
-    {
-        get => _selectedBasket.SelectedThing;
-        set => _selectedBasket.SelectedThing = value;
-    }
-
-    public ObservableCollection<ColorOption> Colors
-    {
-        get => _selectedBasket.Colors;
-    }
-
-    public ColorOption SelectedColor
-    {
-        get => _selectedBasket.SelectedColor;
-        set => _selectedBasket.SelectedColor = value;
-    }
-
     public BasketsViewModel()
     {
         Baskets = new ObservableCollection<BasketViewModel>
