@@ -11,8 +11,10 @@ public class BasketViewModel : BindableBase
     public BasketViewModel(Basket basket)
     {
         _basket = basket;
+        
         Items = new ObservableCollection<Thing>(basket.Things);
         _selectedThing = Items[0];
+        
         Colors = new ObservableCollection<ColorOption>(_selectedThing.Colors);
         _selectedColor = _selectedThing.Colors[0];
     }
