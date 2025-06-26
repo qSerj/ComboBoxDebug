@@ -3,21 +3,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModel="clr-namespace:ComboBoxDebug.ViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" 
              x:Class="ComboBoxDebug.BasketsUserControl"
              x:DataType="viewModel:BasketsViewModel">
 
-    <StackPanel Margin="20" Spacing="10">
-        <TextBlock Text="Корзина:"/>
+    <StackPanel Margin="16" Spacing="12">
+        <TextBlock Text="Выберите корзину:" FontWeight="Bold"/>
         <ComboBox ItemsSource="{Binding Baskets}"
-                  SelectedItem="{Binding SelectedBasket}"/>
-
-        <TextBlock Text="Предмет:" Margin="0,10,0,0"/>
-        <ComboBox ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding SelectedItem}"/>
-
-        <TextBlock Text="Цвет:" Margin="0,10,0,0"/>
-        <ComboBox ItemsSource="{Binding Colors}"
-                  SelectedItem="{Binding SelectedColor}"/>
+                  SelectedItem="{Binding SelectedBasket}"
+                  DisplayMemberBinding="{Binding Name}"
+                  Width="300"/>
+        <StackPanel DataContext="{Binding SelectedBasket}" Spacing="8">
+            <Border Margin="0,12,0,0" Padding="12" CornerRadius="8" Background="#1a1a1a20">
+                <StackPanel Spacing="6">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Выбранная корзина:" Width="140" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Name}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Выбранный предмет:" Width="140" VerticalAlignment="Center"/>
+                        <ComboBox ItemsSource="{Binding Items}"
+                                  SelectedItem="{Binding SelectedThing}"
+                                  Width="150"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Цвет предмета:" Width="140" VerticalAlignment="Center"/>
+                        <ComboBox ItemsSource="{Binding Colors}"
+                                  SelectedItem="{Binding SelectedColor}"
+                                  Width="150"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </StackPanel>
+    
 </UserControl>

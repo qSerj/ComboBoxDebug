@@ -3,8 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:comboBoxDebug="clr-namespace:ComboBoxDebug"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
-        Width="600" Height="400"
+        mc:Ignorable="d" SizeToContent="WidthAndHeight"
         x:Class="ComboBoxDebug.MainWindow"
         Title="ComboBoxDebug">
     <comboBoxDebug:BasketsUserControl/>
