@@ -1,13 +1,15 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using ComboBoxDebug.Model;
+using ComboBoxDebug.Service;
 using Prism.Mvvm;
 
 namespace ComboBoxDebug.ViewModel;
 
 public class BasketsViewModel : BindableBase
 {
+    private readonly BatchUpdateService _batchUpdateService = new();
+    
     public ObservableCollection<BasketViewModel> Baskets { get; }
     
     private BasketViewModel? _selectedBasket;
@@ -16,9 +18,11 @@ public class BasketsViewModel : BindableBase
         get => _selectedBasket;
         set
         {
-            if (SetProperty(ref _selectedBasket, value))
+            using (_batchUpdateService.BeginBatch()) // Подавляем события UI
             {
-                
+                if (SetProperty(ref _selectedBasket, value))
+                {
+                }
             }
         }
     }
@@ -30,11 +34,13 @@ public class BasketsViewModel : BindableBase
             new BasketViewModel(
                 new Basket("Коробка1",
                     new Thing("Мяч", "Красный", "Зелёный"),
-                    new Thing("Куб", "Оранжевый", "Зелёный"))),
+                    new Thing("Куб", "Оранжевый", "Зелёный")),
+                _batchUpdateService),
             new BasketViewModel(
                 new Basket("Коробка2",
                     new Thing("Банан", "Жёлтый", "Зелёный"),
-                    new Thing("Телефон", "Зелёный", "Жёлтый", "Синий")))
+                    new Thing("Телефон", "Зелёный", "Жёлтый", "Синий")),
+                _batchUpdateService)
         };
             
         SelectedBasket = Baskets.FirstOrDefault();
