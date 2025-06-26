@@ -33,7 +33,6 @@ public class BasketViewModel : BindableBase
                 Colors = new ObservableCollection<ColorOption>(_selectedThing.Colors);
                 SelectedColor = _selectedColor;
             }
-            
         }
     }
     

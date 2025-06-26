@@ -23,13 +23,13 @@
                     <StackPanel Orientation="Horizontal" Spacing="6">
                         <TextBlock Text="Выбранный предмет:" Width="140" VerticalAlignment="Center"/>
                         <ComboBox ItemsSource="{Binding Items}"
-                                  SelectedItem="{Binding SelectedThing, Mode=OneTime}"
+                                  SelectedItem="{Binding SelectedThing}"
                                   Width="150"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="6">
                         <TextBlock Text="Цвет предмета:" Width="140" VerticalAlignment="Center"/>
                         <ComboBox ItemsSource="{Binding Colors}"
-                                  SelectedItem="{Binding SelectedColor, Mode=OneTime}"
+                                  SelectedItem="{Binding SelectedColor}"
                                   Width="150"/>
                     </StackPanel>
                 </StackPanel>

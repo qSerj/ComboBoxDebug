@@ -18,8 +18,7 @@ public class BasketsViewModel : BindableBase
         {
             if (SetProperty(ref _selectedBasket, value))
             {
-                //RaisePropertyChanged(nameof(Items));
-                //RaisePropertyChanged(nameof(Colors));
+                
             }
         }
     }
