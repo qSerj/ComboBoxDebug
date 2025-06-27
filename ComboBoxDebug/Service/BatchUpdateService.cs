@@ -2,7 +2,7 @@ namespace ComboBoxDebug.Service;
 
 using System;
 
-public class BatchUpdateService : IDisposable
+public class BatchUpdateService
 {
     private int _batchLevel = 0;
     public bool IsBatch => _batchLevel > 0;
@@ -10,11 +10,18 @@ public class BatchUpdateService : IDisposable
     public IDisposable BeginBatch()
     {
         _batchLevel++;
-        return this;
+        return new BatchScope(this);
     }
 
-    public void Dispose()
+    private void EndBatch()
     {
-        _batchLevel = Math.Max(0, _batchLevel - 1);
+        _batchLevel--;
+    }
+
+    private class BatchScope : IDisposable
+    {
+        private BatchUpdateService _svc;
+        public BatchScope(BatchUpdateService svc) { _svc = svc; }
+        public void Dispose() { _svc.EndBatch(); }
     }
 }
